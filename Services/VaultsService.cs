@@ -1,8 +1,10 @@
 using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Security.Claims;
 using Keepr.Models;
 using Keepr.Repositories;
+using Microsoft.AspNetCore.Http;
 
 namespace Keepr.Services
 {
@@ -15,7 +17,8 @@ namespace Keepr.Services
     }
     public Vault Get(int id)
     {
-      return _repo.GetById(id);
+
+      return _repo.Get(id);
     }
 
     public Vault Create(Vault newVault)
@@ -37,9 +40,19 @@ namespace Keepr.Services
       throw new Exception("Uh Oh something went wrong.");
     }
 
-    internal IEnumerable<Vault> Get(string userId)
+    internal IEnumerable<Vault> GetByUserId(string userId)
     {
-      return _repo.Get(userId);
+      return _repo.GetByUserId(userId);
+    }
+
+    internal IEnumerable<Vault> GetById(int id, string userId)
+    {
+      var found = Get(id);
+      if (found.UserId != userId)
+      {
+        throw new Exception("That aint yours chief");
+      }
+      return _repo.GetById(id, userId);
     }
   }
 }

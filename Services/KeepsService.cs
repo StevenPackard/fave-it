@@ -20,7 +20,12 @@ namespace Keepr.Services
 
     public Keep Get(int id)
     {
-      return _repo.GetById(id);
+      var found = _repo.GetById(id);
+      if (found.IsPrivate == true)
+      {
+        throw new Exception("Thats private yo");
+      }
+      return found;
     }
 
     public Keep Create(Keep newKeep)

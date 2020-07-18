@@ -31,7 +31,7 @@ namespace Keepr.Controllers
       try
       {
         var userId = HttpContext.User.FindFirst(ClaimTypes.NameIdentifier).Value;
-        return Ok(_vs.Get(userId));
+        return Ok(_vs.GetByUserId(userId));
       }
       catch (Exception e)
       {
@@ -60,7 +60,8 @@ namespace Keepr.Controllers
     {
       try
       {
-        return Ok(_vs.Get(id));
+        var userId = HttpContext.User.FindFirst(ClaimTypes.NameIdentifier).Value;
+        return Ok(_vs.GetById(id, userId));
       }
       catch (Exception e)
       {

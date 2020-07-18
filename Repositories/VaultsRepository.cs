@@ -15,7 +15,7 @@ namespace Keepr.Repositories
       _db = db;
     }
 
-    internal Vault GetById(int id)
+    internal Vault Get(int id)
     {
       string sql = "SELECT * FROM vaults WHERE id = @id";
       return _db.QueryFirstOrDefault<Vault>(sql, new { id });
@@ -40,10 +40,15 @@ namespace Keepr.Repositories
       return affectedRows == 1;
     }
 
-    internal IEnumerable<Vault> Get(string userId)
+    internal IEnumerable<Vault> GetByUserId(string userId)
     {
       string sql = "SELECT * FROM vaults WHERE userId = @userId";
       return _db.Query<Vault>(sql, new { userId });
+    }
+    internal IEnumerable<Vault> GetById(int id, string userId)
+    {
+      string sql = "SELECT * FROM vaults WHERE id = @id AND userId = @userId";
+      return _db.Query<Vault>(sql, new { id, userId });
     }
   }
 }
