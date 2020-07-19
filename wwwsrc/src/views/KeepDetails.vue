@@ -25,7 +25,7 @@
             <!-- <div class="row justify-content-center bg-white mt-3" v-if="showVaults">
               <vault v-for="vault in vaults" :key="vault.id" :vault="vault" />
             </div>-->
-
+            <button class="btn btn-outline-danger" @click="deleteKeep">Delete Keep</button>
             <div class="dropdown my-2" v-if="$auth.isAuthenticated">
               <button
                 class="btn-small btn-outline-primary dropdown-toggle"
@@ -45,7 +45,6 @@
                 >{{vault.name}}</a>
               </div>
             </div>
-            <button class="btn btn-outline-danger" @click="deleteKeep">Delete Keep</button>
           </div>
         </div>
       </div>

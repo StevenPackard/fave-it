@@ -2,7 +2,7 @@
   <div class="home container-fluid">
     <div class="row justify-content-center">
       <div class="col-5 bg-light text-center mt-3">
-        <h2>Welcome to Fave-It</h2>
+        <h2>Welcome to Keepr</h2>
       </div>
     </div>
     <div class="row justify-content-center mt-3">

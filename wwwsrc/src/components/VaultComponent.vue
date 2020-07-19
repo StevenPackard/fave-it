@@ -1,9 +1,9 @@
 <template>
-  <div class="col-5 m-2 border border-dark">
+  <div class="col-4 m-2 border border-dark bg-light shadow text-center">
     <router-link :to="{ path: `/vault/${vault.id}` }" @click="setActiveVault">
       <div>
-        <h3>Name: {{vault.name}}</h3>
-        <h3>Desc: {{vault.description}}</h3>
+        <h3>{{vault.name}}</h3>
+        <h5>{{vault.description}}</h5>
       </div>
     </router-link>
   </div>

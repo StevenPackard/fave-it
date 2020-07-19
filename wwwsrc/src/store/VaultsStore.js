@@ -64,5 +64,13 @@ export const VaultsStore = {
         console.error(error);
       }
     },
+    async deleteVaultKeep({ commit, dispatch }, vaultKeepData) {
+      try {
+        await api.delete("vaultkeeps/" + vaultKeepData.vaultKeepId);
+        dispatch("getKeepsByVaultId", vaultKeepData.vaultId);
+      } catch (error) {
+        console.error(error);
+      }
+    },
   },
 };
