@@ -8,7 +8,11 @@
       <p class="text-center">
         <i class="fas fa-eye"></i>
         : {{keep.views}}
-        <i class="fas fa-box ml-2"></i>
+        <img
+          class="small-logo mb-1 ml-2"
+          src="../assets/small-logo.png"
+          alt
+        />
         : {{keep.keeps}}
         <i class="fas fa-share ml-2"></i>
         : {{keep.shares}}
@@ -53,5 +57,8 @@ export default {
 <style>
 .keep-img {
   max-width: 800px;
+}
+.small-logo {
+  width: 20px;
 }
 </style>

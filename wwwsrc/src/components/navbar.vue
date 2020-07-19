@@ -1,6 +1,8 @@
 <template>
   <nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <router-link class="navbar-brand" :to="{ name: 'home' }">Keepr</router-link>
+    <router-link class="navbar-brand" :to="{ name: 'home' }">
+      <img class="nav-img" src="../assets/keepr.png" />
+    </router-link>
     <button
       class="navbar-toggler"
       type="button"
@@ -60,4 +62,9 @@ export default {
 };
 </script>
 
-<style></style>
+<style>
+.nav-img {
+  width: 100px;
+  height: 90px;
+}
+</style>

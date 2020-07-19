@@ -25,7 +25,6 @@ export const VaultsStore = {
     async getMyVaults({ commit, dispatch }) {
       try {
         let res = await api.get("vaults");
-        console.log(res.data);
         commit("setMyVaults", res.data);
       } catch (error) {
         console.error(error);

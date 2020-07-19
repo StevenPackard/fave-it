@@ -20,7 +20,6 @@ import keep from "../components/KeepComponent";
 export default {
   name: "vault-details",
   beforeRouteLeave(to, from, next) {
-    // just use `this`
     this.$store.state.VaultsStore.activeVault = {};
     next();
   },
