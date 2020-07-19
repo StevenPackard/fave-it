@@ -34,7 +34,7 @@ namespace Keepr.Controllers
     }
 
     [HttpGet("{id}")]
-    [Authorize]
+
     public ActionResult<IEnumerable<Keep>> Get(int id)
     {
       try

@@ -45,7 +45,7 @@ namespace Keepr.Services
       return _repo.GetByUserId(userId);
     }
 
-    internal IEnumerable<Vault> GetById(int id, string userId)
+    internal Vault GetById(int id, string userId)
     {
       var found = Get(id);
       if (found.UserId != userId)
