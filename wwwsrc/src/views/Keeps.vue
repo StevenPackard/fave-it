@@ -18,7 +18,9 @@
       <div class="col-10 text-center">
         <button class="btn btn-outline-primary" @click="showPrivate = !showPrivate">Show All Keeps</button>
       </div>
-      <keep class="mx-2 my-2" v-for="keep in privateKeeps" :key="keep.id" :keep="keep" />
+      <div class="card-columns">
+        <keep class="mx-2 my-2" v-for="keep in privateKeeps" :key="keep.id" :keep="keep" />
+      </div>
     </div>
     <div class="row justify-content-center mt-2" v-if="!showPrivate">
       <div class="col-10 text-center">
@@ -27,7 +29,9 @@
           @click="showPrivate = !showPrivate"
         >Show Private Keeps</button>
       </div>
-      <keep class="mx-2 my-2" v-for="keep in keeps" :key="keep.id" :keep="keep" />
+      <div class="card-columns">
+        <keep class v-for="keep in keeps" :key="keep.id" :keep="keep" />
+      </div>
     </div>
   </div>
 </template>

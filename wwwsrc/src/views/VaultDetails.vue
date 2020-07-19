@@ -1,19 +1,16 @@
 <template>
   <div class="container-fluid">
-    <div class="row">
-      <div class="col-12 text-center">
-        <h1>This is the vault page</h1>
-      </div>
-    </div>
-    <div class="row justify-content-center">
+    <div class="row justify-content-center mt-4 mb-2">
       <div class="col-10 text-center border border-dark bg-white">
         <h1>{{vault.name}}</h1>
         <p>{{vault.description}}</p>
         <button class="btn btn-danger my-2" @click="deleteVault">Delete Vault</button>
       </div>
     </div>
-    <div class="row justify-content-center">
-      <keep class="m-2" v-for="keep in keeps" :key="keep.id" :keep="keep" :vaultId="vault.id" />
+    <div class="row mr-3">
+      <div class="card-columns">
+        <keep class="m-2" v-for="keep in keeps" :key="keep.id" :keep="keep" :vaultId="vault.id" />
+      </div>
     </div>
   </div>
 </template>

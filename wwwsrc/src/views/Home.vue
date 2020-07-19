@@ -5,8 +5,10 @@
         <h2>Welcome to Keepr</h2>
       </div>
     </div>
-    <div class="row justify-content-center mt-3">
-      <keep class="mx-2 my-2" v-for="keep in keeps" :key="keep.Id" :keep="keep" />
+    <div class="row mt-3 mx-2">
+      <div class="card-columns">
+        <keep v-for="keep in keeps" :key="keep.Id" :keep="keep" />
+      </div>
     </div>
   </div>
 </template>
@@ -36,3 +38,5 @@ export default {
   }
 };
 </script>
+<style scoped>
+</style>

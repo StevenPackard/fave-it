@@ -1,20 +1,42 @@
 <template>
-  <form class="mt-3" @submit.prevent="addVault">
-    <div class="form-row">
-      <div class="col">
-        <input type="text" v-model="newVault.name" class="form-control" placeholder="Vault Name" />
-      </div>
-      <div class="col">
+  <div class="vaultForm">
+    <form @submit.prevent="addVault">
+      <div class="form-group">
+        <label for="make">Title</label>
         <input
+          v-model="newVault.name"
           type="text"
-          v-model="newVault.description"
+          name="title"
           class="form-control"
-          placeholder="Vault Description"
+          placeholder="Enter title...."
+          required
         />
       </div>
-      <button class="btn btn-success" type="submit">Add Vault</button>
-    </div>
-  </form>
+      <div class="form-group">
+        <label for="model">Description</label>
+        <input
+          v-model="newVault.description"
+          type="text"
+          name="description"
+          class="form-control"
+          placeholder="Enter description...."
+          required
+        />
+      </div>
+      <div class="form-group">
+        <label for="year">Image URL</label>
+        <input
+          v-model="newVault.img"
+          type="text"
+          name="imgUrl"
+          class="form-control"
+          placeholder="Enter img url...."
+        />
+      </div>
+
+      <button type="submit" class="btn btn-primary">Add Vault</button>
+    </form>
+  </div>
 </template>
 
 <script>
@@ -22,13 +44,17 @@ export default {
   name: "vault-form",
   data() {
     return {
-      newVault: {}
+      newVault: {
+        userImg: this.$auth.user.picture
+      }
     };
   },
   methods: {
     addVault() {
       this.$store.dispatch("addVault", { ...this.newVault });
-      this.newVault = {};
+      this.newVault = {
+        userImg: this.$auth.user.picture
+      };
     }
   }
 };

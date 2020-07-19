@@ -1,9 +1,5 @@
 <template>
-  <div
-    class="card shadow"
-    style="width: 18rem;"
-    @click="$router.push({name: 'keep-details', params: {id: keep.id}})"
-  >
+  <div class="card shadow m-3" @click="$router.push({name: 'keep-details', params: {id: keep.id}})">
     <img :src="keep.img" class="card-img-top" />
     <div class="card-body text-center">
       <h5 class="card-title">{{keep.name}}</h5>
@@ -55,4 +51,7 @@ export default {
 </script>
 
 <style>
+.keep-img {
+  max-width: 800px;
+}
 </style>

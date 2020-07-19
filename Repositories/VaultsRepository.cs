@@ -25,9 +25,9 @@ namespace Keepr.Repositories
     {
       string sql = @"
            INSERT INTO vaults
-           (name, description, userId)
+           (name, description, img, userId)
            VALUES
-           (@Name, @Description, @UserId);
+           (@Name, @Description,@Img, @UserId);
            SELECT LAST_INSERT_ID()";
       VaultData.Id = _db.ExecuteScalar<int>(sql, VaultData);
       return VaultData;

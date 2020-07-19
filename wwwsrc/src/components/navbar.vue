@@ -22,10 +22,10 @@
           v-if="$auth.isAuthenticated"
           :class="{ active: $route.name == 'vaults' }"
         >
-          <router-link class="nav-link" :to="{ name: 'vaults' }">My-Vaults</router-link>
+          <router-link class="nav-link" :to="{ name: 'vaults' }">My Vaults</router-link>
         </li>
         <li class="nav-item" :class="{ active: $route.name == 'keeps' }">
-          <router-link :to="{ name: 'keeps' }" class="nav-link">My-Keeps</router-link>
+          <router-link :to="{ name: 'keeps' }" class="nav-link">My Keeps</router-link>
         </li>
       </ul>
       <span class="navbar-text">
