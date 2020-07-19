@@ -22,6 +22,9 @@ export const KeepsStore = {
     setMyKeeps(state, keeps) {
       state.myKeeps = keeps;
     },
+    addNewKeep(state, keep) {
+      state.myKeeps.push(keep);
+    },
   },
 
   actions: {
@@ -69,6 +72,22 @@ export const KeepsStore = {
       try {
         let res = await api.get("keeps/my-keeps");
         commit("setMyKeeps", res.data);
+      } catch (error) {
+        console.error(error);
+      }
+    },
+    async addKeep({ commit, dispatch }, newKeep) {
+      try {
+        let res = await api.post("keeps", newKeep);
+        commit("addNewKeep", res.data);
+      } catch (error) {
+        console.error(error);
+      }
+    },
+    async deleteKeep({ commit, dispatch }, keepId) {
+      try {
+        await api.delete("keeps/" + keepId);
+        router.push({ name: "keeps" });
       } catch (error) {
         console.error(error);
       }

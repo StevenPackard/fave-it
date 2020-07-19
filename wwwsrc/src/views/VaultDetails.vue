@@ -22,6 +22,11 @@
 import keep from "../components/KeepComponent";
 export default {
   name: "vault-details",
+  beforeRouteLeave(to, from, next) {
+    // just use `this`
+    this.$store.state.VaultsStore.activeVault = {};
+    next();
+  },
   mounted() {
     this.$store.dispatch("getVaultById", this.$route.params.id);
     this.$store.dispatch("getKeepsByVaultId", this.$route.params.id);

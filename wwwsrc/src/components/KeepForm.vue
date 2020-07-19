@@ -1,34 +1,72 @@
 <template>
-  <form class="mt-3" @submit.prevent="addVault">
-    <div class="form-row">
-      <div class="col">
-        <input type="text" v-model="newVault.name" class="form-control" placeholder="Vault Name" />
-      </div>
-      <div class="col">
+  <div class="keepForm">
+    <form @submit.prevent="addKeep">
+      <div class="form-group">
+        <label for="make">Title</label>
         <input
+          v-model="newKeep.name"
           type="text"
-          v-model="newVault.description"
+          name="title"
           class="form-control"
-          placeholder="Vault Description"
+          placeholder="Enter title...."
+          required
         />
       </div>
-      <button class="btn btn-success" type="submit">Add Vault</button>
-    </div>
-  </form>
+      <div class="form-group">
+        <label for="model">Description</label>
+        <input
+          v-model="newKeep.description"
+          type="text"
+          name="description"
+          class="form-control"
+          placeholder="Enter description...."
+          required
+        />
+      </div>
+      <div class="form-group">
+        <label for="year">Image URL</label>
+        <input
+          v-model="newKeep.img"
+          type="text"
+          name="imgUrl"
+          class="form-control"
+          placeholder="Enter img url...."
+          required
+        />
+      </div>
+      <div class="form-group">
+        <div class="form-check">
+          <input
+            v-model="newKeep.isPrivate"
+            class="form-check-input"
+            type="checkbox"
+            value
+            id="defaultCheck1"
+          />
+          <label class="form-check-label" for="defaultCheck1">Private?</label>
+        </div>
+      </div>
+      <button type="submit" class="btn btn-primary">Add Keep</button>
+    </form>
+  </div>
 </template>
 
 <script>
 export default {
-  name: "keep-form",
+  name: "keepForm",
   data() {
     return {
-      newVault: {}
+      newKeep: {
+        isPrivate: false
+      }
     };
   },
   methods: {
-    addVault() {
-      this.$store.dispatch("addVault", { ...this.newVault });
-      this.newVault = {};
+    addKeep() {
+      this.$store.dispatch("addKeep", { ...this.newKeep });
+      this.newKeep = {
+        isPrivate: false
+      };
     }
   }
 };

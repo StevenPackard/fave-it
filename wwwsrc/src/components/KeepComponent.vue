@@ -6,7 +6,14 @@
         <h5 class="card-title">{{keep.name}}</h5>
         <p class="card-text">{{keep.description}}.</p>
 
-        <p class="text-center">V: {{keep.views}} - K: {{keep.keeps}} - S: {{keep.shares}}</p>
+        <p class="text-center">
+          <i class="fas fa-eye"></i>
+          : {{keep.views}}
+          <i class="fas fa-box ml-2"></i>
+          : {{keep.keeps}}
+          <i class="fas fa-share ml-2"></i>
+          : {{keep.shares}}
+        </p>
       </div>
     </div>
   </router-link>

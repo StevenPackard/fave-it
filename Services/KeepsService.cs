@@ -27,6 +27,20 @@ namespace Keepr.Services
       }
       return found;
     }
+    public Keep Get(int id, string userId)
+    {
+      var found = _repo.GetById(id);
+      if (found.UserId == userId)
+      {
+        return found;
+      }
+      if (found.IsPrivate == true)
+      {
+        throw new Exception("Thats private yo");
+      }
+      return found;
+
+    }
 
     public Keep Create(Keep newKeep)
     {
@@ -35,7 +49,7 @@ namespace Keepr.Services
 
     internal string Delete(int id, string userId)
     {
-      Keep found = Get(id);
+      Keep found = Get(id, userId);
       if (found.UserId != userId)
       {
         throw new Exception("This isnt your keep homie.");
@@ -54,7 +68,7 @@ namespace Keepr.Services
 
     internal Keep Edit(Keep editKeep, string userId)
     {
-      Keep found = Get(editKeep.Id);
+      Keep found = Get(editKeep.Id, userId);
       if (found.Views < editKeep.Views)
       {
         if (_repo.IncreaseViews(editKeep))

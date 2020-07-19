@@ -5,6 +5,14 @@
         <h1>My Keeps</h1>
       </div>
     </div>
+    <div class="row">
+      <div class="col text-center">
+        <button class="btn btn-outline-primary" @click="showKeepForm = !showKeepForm">New Keep</button>
+      </div>
+      <div class="col-12" v-if="showKeepForm">
+        <keepForm />
+      </div>
+    </div>
     <div class="row justify-content-center">
       <keep class="mx-2 my-2" v-for="keep in keeps" :key="keep.id" :keep="keep" />
     </div>
@@ -13,8 +21,14 @@
 
 <script>
 import keep from "../components/KeepComponent";
+import keepForm from "../components/KeepForm";
 export default {
   name: "keeps",
+  data() {
+    return {
+      showKeepForm: false
+    };
+  },
   mounted() {
     this.$store.dispatch("getMyKeeps");
   },
@@ -24,7 +38,8 @@ export default {
     }
   },
   components: {
-    keep
+    keep,
+    keepForm
   }
 };
 </script>

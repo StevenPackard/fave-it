@@ -9,24 +9,24 @@
       <div class="col-11 border details-box border-dark">
         <div class="row justify-content-center mt-3">
           <div class="col-10 text-center">
-            <img :src="keep.img" />
+            <img class="img-box" :src="keep.img" />
           </div>
         </div>
-        <div class="row mt-5 justify-content-center">
+        <div class="row mt-3 justify-content-center">
           <div class="col-10 text-center">
             <h1>{{keep.name}}</h1>
             <h5>{{keep.description}}</h5>
           </div>
-          <div class="col-7 border border-secondary text-center mt-5">
+          <div class="col-7 border border-secondary text-center mt-3">
             <h3>Views: {{keep.views}} -- Keeps: {{keep.keeps}} -- Shares: {{keep.shares}}</h3>
           </div>
-          <div class="col-12 text-center mt-4">
+          <div class="col-12 text-center mt-2">
             <!-- <button class="btn btn-outline-primary" @click="showVaults = !showVaults">Add to Vault</button> -->
             <!-- <div class="row justify-content-center bg-white mt-3" v-if="showVaults">
               <vault v-for="vault in vaults" :key="vault.id" :vault="vault" />
             </div>-->
 
-            <div class="dropdown" v-if="$auth.isAuthenticated">
+            <div class="dropdown my-2" v-if="$auth.isAuthenticated">
               <button
                 class="btn-small btn-outline-primary dropdown-toggle"
                 type="button"
@@ -45,6 +45,7 @@
                 >{{vault.name}}</a>
               </div>
             </div>
+            <button class="btn btn-outline-danger" @click="deleteKeep">Delete Keep</button>
           </div>
         </div>
       </div>
@@ -56,6 +57,11 @@
 import vault from "../components/VaultComponent";
 export default {
   name: "keep-details",
+  beforeRouteLeave(to, from, next) {
+    // just use `this`
+    this.$store.state.KeepsStore.activeKeep = {};
+    next();
+  },
   data() {
     return {
       showVaults: false
@@ -72,6 +78,9 @@ export default {
         keep: this.keep,
         vaultKeep: newVaultKeep
       });
+    },
+    deleteKeep() {
+      this.$store.dispatch("deleteKeep", this.$route.params.id);
     }
   },
   computed: {
@@ -90,6 +99,9 @@ export default {
 
 <style>
 .details-box {
-  height: 70vh;
+  height: 80vh;
+}
+.img-box {
+  max-height: 400px;
 }
 </style>
