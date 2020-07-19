@@ -9,6 +9,7 @@
       <div class="col-10 text-center border border-dark bg-white">
         <h1>{{vault.name}}</h1>
         <p>{{vault.description}}</p>
+        <button class="btn btn-danger my-2" @click="deleteVault">Delete Vault</button>
       </div>
     </div>
     <div class="row justify-content-center">
@@ -31,6 +32,11 @@ export default {
     },
     keeps() {
       return this.$store.state.VaultsStore.vaultKeeps;
+    }
+  },
+  methods: {
+    deleteVault() {
+      this.$store.dispatch("deleteVault", this.$route.params.id);
     }
   },
   components: {

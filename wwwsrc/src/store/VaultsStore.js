@@ -56,5 +56,13 @@ export const VaultsStore = {
         console.error(error);
       }
     },
+    async deleteVault({ commit, dispatch }, vaultId) {
+      try {
+        await api.delete("vaults/" + vaultId);
+        router.push({ name: "vaults" });
+      } catch (error) {
+        console.error(error);
+      }
+    },
   },
 };

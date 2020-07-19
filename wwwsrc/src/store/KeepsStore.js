@@ -19,6 +19,9 @@ export const KeepsStore = {
     setKeepDetails(state, keep) {
       state.activeKeep = keep;
     },
+    setMyKeeps(state, keeps) {
+      state.myKeeps = keeps;
+    },
   },
 
   actions: {
@@ -58,6 +61,14 @@ export const KeepsStore = {
         keep.keeps++;
         let res = await api.put("keeps/" + keep.id, keep);
         commit("setKeepDetails", res.data);
+      } catch (error) {
+        console.error(error);
+      }
+    },
+    async getMyKeeps({ commit, dispatch }) {
+      try {
+        let res = await api.get("keeps/my-keeps");
+        commit("setMyKeeps", res.data);
       } catch (error) {
         console.error(error);
       }

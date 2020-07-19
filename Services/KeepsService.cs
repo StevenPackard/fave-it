@@ -47,6 +47,11 @@ namespace Keepr.Services
       throw new Exception("Uh Oh something went wrong.");
     }
 
+    internal IEnumerable<Keep> GetKeepsByUser(string userId)
+    {
+      return _repo.GetKeepsByUser(userId);
+    }
+
     internal Keep Edit(Keep editKeep, string userId)
     {
       Keep found = Get(editKeep.Id);

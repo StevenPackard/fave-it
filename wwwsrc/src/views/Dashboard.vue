@@ -2,7 +2,7 @@
   <div class="dashboard container-fluid">
     <div class="row justify-content-center">
       <div class="col-6 text-center">
-        <h2>Your Dashboard</h2>
+        <h2>My Vaults</h2>
       </div>
     </div>
     <vaultForm />

@@ -46,6 +46,12 @@ namespace Keepr.Repositories
       return affectedRows == 1;
     }
 
+    internal IEnumerable<Keep> GetKeepsByUser(string userId)
+    {
+      string sql = "SELECT * FROM keeps WHERE userId = @userId";
+      return _db.Query<Keep>(sql, new { userId });
+    }
+
     internal bool IncreaseKeeps(Keep editKeep)
     {
       string sql = @"
