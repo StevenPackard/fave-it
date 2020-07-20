@@ -37,14 +37,17 @@
             <!-- <div class="row justify-content-center bg-white mt-3" v-if="showVaults">
               <vault v-for="vault in vaults" :key="vault.id" :vault="vault" />
             </div>-->
-            <button class="btn btn-outline-danger" @click="deleteKeep">
+            <button
+              class="btn btn-outline-danger interact-buttons"
+              @click="deleteKeep"
+            >
               Delete Keep
             </button>
           </div>
           <div class="col-3">
             <div class="dropdown my-2" v-if="$auth.isAuthenticated">
               <button
-                class="btn btn-outline-primary dropdown-toggle"
+                class="btn btn-outline-primary dropdown-toggle interact-buttons"
                 type="button"
                 id="dropdownMenuButton"
                 data-toggle="dropdown"
@@ -67,7 +70,7 @@
           </div>
           <div class="col-3 mt-2">
             <button
-              class="btn btn-outline-primary"
+              class="btn btn-outline-primary interact-buttons"
               @click="showSocials = !showSocials"
             >
               Share
@@ -115,7 +118,7 @@
           </div>
         </div>
         <div class="row justify-content-center mt-5">
-          <div class="col-11 bg-secondary comment-box">
+          <div class="col-11  comment-box shadow">
             <h2>Comment section in progress</h2>
           </div>
         </div>
@@ -190,6 +193,7 @@ export default {
 }
 .comment-box {
   height: 50vh;
+  background-color: #cbe7f0;
 }
 .social-icon {
   width: 5rem;
@@ -202,5 +206,8 @@ export default {
 }
 .pt-button {
   background-color: #e60023;
+}
+.interact-buttons {
+  width: 8rem;
 }
 </style>

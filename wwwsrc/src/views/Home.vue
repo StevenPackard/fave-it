@@ -5,7 +5,7 @@
         <h3>Welcome to Keepr</h3>
       </div>
       <!-- Carousel -->
-      <div class="col-11 mt-3 carousel-fade">
+      <div class="col-11 mt-3 carousel-fade" v-if="keeps.length > 0">
         <div
           id="carouselExampleIndicators"
           class="carousel slide"

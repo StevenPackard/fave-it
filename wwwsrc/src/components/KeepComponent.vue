@@ -34,9 +34,7 @@
 <script>
 export default {
   name: "keep-component",
-  mounted() {
-    this.$store.dispatch("getMyVaults");
-  },
+  mounted() {},
   computed: {
     vaults() {
       return this.$store.state.VaultsStore.myVaults;
