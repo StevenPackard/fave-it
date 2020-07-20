@@ -1,5 +1,5 @@
 <template>
-  <div id="app">
+  <div class="app" id="app">
     <navbar />
     <router-view />
   </div>
@@ -20,8 +20,12 @@ export default {
 };
 </script>
 
+
 <style lang="scss">
 @import "./assets/_variables.scss";
 @import "bootstrap";
 @import "./assets/_overrides.scss";
+.app {
+  font-family: "Signika", sans-serif;
+}
 </style>

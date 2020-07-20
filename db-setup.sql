@@ -4,7 +4,7 @@
 --     id int NOT NULL AUTO_INCREMENT,
 --     name VARCHAR(255) NOT NULL,
 --     description VARCHAR(255) NOT NULL,
---     img VARCHAR(255) NOT NULL,
+--     img VARCHAR(255),
 --     userId VARCHAR(255),
 --     INDEX userId (userId),  
 --     PRIMARY KEY (id)

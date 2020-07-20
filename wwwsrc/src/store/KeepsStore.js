@@ -68,6 +68,15 @@ export const KeepsStore = {
         console.error(error);
       }
     },
+    async increaseKeepShares({ commit, dispatch }, keep) {
+      try {
+        keep.shares++;
+        let res = await api.put("keeps/" + keep.id, keep);
+        commit("setKeepDetails", res.data);
+      } catch (error) {
+        console.error(error);
+      }
+    },
     async getMyKeeps({ commit, dispatch }) {
       try {
         let res = await api.get("keeps/my-keeps");

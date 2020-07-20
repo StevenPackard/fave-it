@@ -53,8 +53,14 @@ namespace Keepr.Controllers
     {
       try
       {
-        string userId = HttpContext.User.FindFirst(ClaimTypes.NameIdentifier).Value;
-        return Ok(_ks.Get(id, userId));
+
+        if (HttpContext.User.Identity.IsAuthenticated)
+        {
+          string userId = HttpContext.User.FindFirst(ClaimTypes.NameIdentifier).Value;
+          return Ok(_ks.Get(id, userId));
+        }
+
+        return Ok(_ks.Get(id));
       }
       catch (Exception e)
       {
