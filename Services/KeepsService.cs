@@ -78,6 +78,15 @@ namespace Keepr.Services
         }
         throw new Exception("You cant do that edit.");
       }
+      if (found.Shares < editKeep.Shares)
+      {
+        if (_repo.IncreaseShares(editKeep))
+        {
+          found.Shares = editKeep.Shares;
+          return found;
+        }
+        throw new Exception("You cant do that edit.");
+      }
       if (found.Keeps < editKeep.Keeps)
       {
         if (_repo.IncreaseKeeps(editKeep))

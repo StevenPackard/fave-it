@@ -92,5 +92,15 @@ namespace Keepr.Repositories
       int affectedRows = _db.Execute(sql, editKeep);
       return affectedRows == 1;
     }
+    internal bool IncreaseShares(Keep editKeep)
+    {
+      string sql = @"
+      UPDATE keeps
+      SET
+      shares= @Shares
+      WHERE id = @Id";
+      int affectedRows = _db.Execute(sql, editKeep);
+      return affectedRows == 1;
+    }
   }
 }
